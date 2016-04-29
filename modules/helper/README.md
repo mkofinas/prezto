@@ -13,6 +13,8 @@ Functions
   - `is-callable` checks if a name is a command, function, or alias.
   - `is-true` checks a boolean variable for "true".
   - `coalesce` prints the first non-empty string in the arguments array.
+  - `make-superscript` returns the superscripted version of a number.
+  - `make-subscript` returns the subscripted version of a number.
 
 Authors
 -------
