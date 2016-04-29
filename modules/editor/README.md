@@ -38,6 +38,11 @@ mode, add the following to your `theme_prompt_setup` function.
 
     zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format 'O'
 
+To indicate when the editor is in the primary keymap (emacs or viins) visual
+mode, add the following to your `theme_prompt_setup` function.
+
+    zstyle ':prezto:module:editor:info:keymap:primary:visual' format 'V'
+
 To indicate when the editor is in the alternate keymap (vicmd), add the
 following to your `theme_prompt_setup` function.
 

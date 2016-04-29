@@ -96,6 +96,9 @@ function editor-info {
     if [[ "$ZLE_STATE" == *overwrite* ]]; then
       zstyle -s ':prezto:module:editor:info:keymap:primary:overwrite' format 'REPLY'
       editor_info[overwrite]="$REPLY"
+    elif [[ "$KEYMAP" == 'vivis' || "$KEYMAP" == 'vivli' ]]; then
+      zstyle -s ':prezto:module:editor:info:keymap:primary:visual' format 'REPLY'
+      editor_info[overwrite]="$REPLY"
     else
       zstyle -s ':prezto:module:editor:info:keymap:primary:insert' format 'REPLY'
       editor_info[overwrite]="$REPLY"
