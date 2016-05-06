@@ -17,8 +17,14 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+# Set editor for local and remote sessions
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+   export VISUAL='vim'
+ else
+   export EDITOR='nvim'
+   export VISUAL='nvim'
+ fi
 export PAGER='less'
 
 #
@@ -72,3 +78,20 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
+
+# pip zsh completion start
+function _pip_completion {
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=( $( COMP_WORDS="$words[*]" \
+             COMP_CWORD=$(( cword-1 )) \
+             PIP_AUTO_COMPLETE=1 $words[1] ) )
+}
+compctl -K _pip_completion pip
+# pip zsh completion end
+
+# startup virtualenv-burrito
+if [ -f $HOME/.venvburrito/startup.sh ]; then
+    . $HOME/.venvburrito/startup.sh
+fi
