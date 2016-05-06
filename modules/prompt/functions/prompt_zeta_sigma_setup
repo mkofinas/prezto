@@ -152,12 +152,13 @@ function prompt_sorin_setup {
 %(?,%F{2}┃%f,%F{1}┃%f)${editor_info[keymap]}${editor_info[insert]}${editor_info[overwrite]}%(?,%F{2}┃%f,%F{1}┃%f) '
   PS2='%(?,%F{2}┃%f,%F{1}┃%f)${editor_info[keymap]}${editor_info[insert]}${editor_info[overwrite]}%(?,%F{2}┃%f,%F{1}┃%f) '
   RPROMPT=''
+  SPROMPT='Correct %F{1}%R%f to %F{2}%r%f [%UY%ues | %UN%uo | %Ua%ubort | %Ue%udit]? '
 
-  if (( $+commands[fuck] )); then
-    SPROMPT='fuck '
-  else
-    SPROMPT='Correct %F{1}%R%f to %F{2}%r%f [%UY%ues | %UN%uo | %UA%ubort | %UE%udit]? '
-  fi
+  # if (( $+commands[fuck] )); then
+    # SPROMPT='fuck '
+  # else
+    # SPROMPT='Correct %F{1}%R%f to %F{2}%r%f [%UY%ues | %UN%uo | %Ua%ubort | %Ue%udit]? '
+  # fi
 }
 
 function prompt_sorin_preview {
