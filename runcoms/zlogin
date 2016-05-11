@@ -15,7 +15,7 @@
 } &!
 
 # Print a random, hopefully interesting, adage.
-if (( $+commands[fortune] && $+commands[takis] )); then
+if (( $+commands[fortune] && $+commands[cowsay] )); then
   if [[ -t 0 || -t 1 ]]; then
     fortune -s | cowsay -f moose
   fi
