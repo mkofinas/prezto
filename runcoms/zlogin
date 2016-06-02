@@ -15,8 +15,11 @@
 } &!
 
 # Print a random, hopefully interesting, adage.
-if (( $+commands[fortune] && $+commands[cowsay] )); then
+if (( $+commands[python] )); then
+  # if (( $+commands[fortune] && $+commands[cowsay] )); then
   if [[ -t 0 || -t 1 ]]; then
-    fortune -s | cowsay -f moose
+    # fortune -s | cowsay -f moose
+    print
+    bash ${HOME}/My-Repos/random-quotes/print_random_quote.sh
   fi
 fi
