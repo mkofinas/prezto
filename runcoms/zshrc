@@ -5,7 +5,8 @@
 # 2. Plugin Manager: Zplug                                                     #
 # 3. Source Files                                                              #
 # 4. Aliases                                                                   #
-# 5. Plugin Settings                                                           #
+# 5. Keybindings                                                               #
+# 6. Plugin Settings                                                           #
 # -------------------------                                                    #
 # Author(s):                                                                   #
 # - Miltiadis Kofinas <mkofinas@gmail.com>                                     #
@@ -175,14 +176,25 @@ alias zsh_theme="$EDITOR $ZPLUG_HOME/repos/mkofinas/zeta-sigma-zsh-theme/zeta_si
 ################################################################################
 
 ################################################################################
+# Keybindings {{{1
+################################################################################
+for keymap in 'emacs' 'viins' 'vicmd'; do
+    # [Ctrl-RightArrow] - move forward one word
+    bindkey -M $keymap '^[[1;3C' forward-word
+    # [Ctrl-LeftArrow] - move backward one word
+    bindkey -M $keymap '^[[1;3D' backward-word
+done
+unset keymap
+# 1}}}
+################################################################################
+
+################################################################################
 # Plugin Settings {{{1
 ################################################################################
 
 ################################################################################
 # History Substring Search {{{2
 ################################################################################
-# Ignore all duplicates from search
-setopt HIST_IGNORE_ALL_DUPS
 
 # Bind <Up, Down> keys for search
 zmodload zsh/terminfo
