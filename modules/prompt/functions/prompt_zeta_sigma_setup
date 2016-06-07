@@ -33,59 +33,59 @@
 # Load dependencies.
 pmodload 'helper'
 
-function prompt_sorin_pwd {
+function prompt_zeta_sigma_pwd {
   local pwd="${PWD/#$HOME/~}"
 
   if [[ "$pwd" == (#m)[/~] ]]; then
-    _prompt_sorin_pwd="$MATCH"
+    _prompt_zeta_sigma_pwd="$MATCH"
     unset MATCH
   else
     local pwd_without_tilde="${PWD/#$HOME/}"
-    local prompt_sorin_pwd_prefix="${pwd%%/*}/"
+    local prompt_zeta_sigma_pwd_prefix="${pwd%%/*}/"
     if [[ "${#${(@s:/:)pwd_without_tilde}}">3 ]]; then
-      prompt_sorin_pwd_prefix="${prompt_sorin_pwd_prefix}.../"
+      prompt_zeta_sigma_pwd_prefix="${prompt_zeta_sigma_pwd_prefix}.../"
     fi
     local -a last_two_directories
     last_two_directories=(${pwd_without_tilde:h:t} ${pwd_without_tilde:t})
-    _prompt_sorin_pwd="${prompt_sorin_pwd_prefix}${(@j:/:M)last_two_directories}"
+    _prompt_zeta_sigma_pwd="${prompt_zeta_sigma_pwd_prefix}${(@j:/:M)last_two_directories}"
   fi
 }
 
-function prompt_sorin_git_info {
-  if (( _prompt_sorin_precmd_async_pid > 0 )); then
+function prompt_zeta_sigma_git_info {
+  if (( _prompt_zeta_sigma_precmd_async_pid > 0 )); then
     # Append Git status.
-    if [[ -s "$_prompt_sorin_precmd_async_data" ]]; then
+    if [[ -s "$_prompt_zeta_sigma_precmd_async_data" ]]; then
       alias typeset='typeset -g'
-      source "$_prompt_sorin_precmd_async_data"
+      source "$_prompt_zeta_sigma_precmd_async_data"
       RPROMPT+='${git_info:+${(e)git_info[status]}}'
       unalias typeset
     fi
 
     # Reset PID.
-    _prompt_sorin_precmd_async_pid=0
+    _prompt_zeta_sigma_precmd_async_pid=0
 
     # Redisplay prompt.
     zle && zle reset-prompt
   fi
 }
 
-function prompt_sorin_precmd_async {
+function prompt_zeta_sigma_precmd_async {
   # Get Git repository information.
   if (( $+functions[git-info] )); then
     git-info
-    typeset -p git_info >! "$_prompt_sorin_precmd_async_data"
+    typeset -p git_info >! "$_prompt_zeta_sigma_precmd_async_data"
   fi
 
   # Signal completion to parent process.
   kill -WINCH $$
 }
 
-function prompt_sorin_precmd {
+function prompt_zeta_sigma_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
 
   # Format PWD.
-  prompt_sorin_pwd
+  prompt_zeta_sigma_pwd
 
   # Get Python environment information.
   if (( $+functions[python-info] )); then
@@ -95,28 +95,28 @@ function prompt_sorin_precmd {
   RPROMPT='$python_info[virtualenv]'
 
   # Kill the old process of slow commands if it is still running.
-  if (( _prompt_sorin_precmd_async_pid > 0 )); then
-    kill -KILL "$_prompt_sorin_precmd_async_pid" &>/dev/null
+  if (( _prompt_zeta_sigma_precmd_async_pid > 0 )); then
+    kill -KILL "$_prompt_zeta_sigma_precmd_async_pid" &>/dev/null
   fi
 
   # Compute slow commands in the background.
-  trap prompt_sorin_git_info WINCH
-  prompt_sorin_precmd_async &!
-  _prompt_sorin_precmd_async_pid=$!
+  trap prompt_zeta_sigma_git_info WINCH
+  prompt_zeta_sigma_precmd_async &!
+  _prompt_zeta_sigma_precmd_async_pid=$!
 }
 
-function prompt_sorin_setup {
+function prompt_zeta_sigma_setup {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
   prompt_opts=(cr percent subst)
-  _prompt_sorin_precmd_async_pid=0
-  _prompt_sorin_precmd_async_data="${TMPPREFIX}-prompt_sorin_data"
+  _prompt_zeta_sigma_precmd_async_pid=0
+  _prompt_zeta_sigma_precmd_async_data="${TMPPREFIX}-prompt_zeta_sigma_data"
 
   # Load required functions.
   autoload -Uz add-zsh-hook
 
   # Add hook for calling git-info before each command.
-  add-zsh-hook precmd prompt_sorin_precmd
+  add-zsh-hook precmd prompt_zeta_sigma_precmd
 
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:completing' format '%B%F{7}...%f%b'
@@ -147,9 +147,9 @@ function prompt_sorin_setup {
     'status' ' ($(coalesce "%b%R" "%p%c"))%s%A%B%S%a%d%m%r%U%u'
 
   # Define prompts.
-  PROMPT='%F{3} %f%F{6}%n%f%F{3}:%f%B%F{1}[%f%b%F{1}${_prompt_sorin_pwd}%f%B%F{1}]%f%b%(!. %B%F{1}#%f%b.)
-%(?,%F{2}┃%f,%F{1}┃%f)${editor_info[keymap]}${editor_info[insert]}${editor_info[overwrite]}%(?,%F{2}┃%f,%F{1}┃%f) '
-  PS2='%(?,%F{2}┃%f,%F{1}┃%f)${editor_info[keymap]}${editor_info[insert]}${editor_info[overwrite]}%(?,%F{2}┃%f,%F{1}┃%f) '
+  PROMPT='%F{3} %f%F{6}%n%f%F{3}:%f%B%F{1}[%f%b%F{1}${_prompt_zeta_sigma_pwd}%f%B%F{1}]%f%b%(!. %B%F{1}#%f%b.)
+%(?,%F{2}│%f,%F{1}│%f)${editor_info[keymap]}${editor_info[insert]}${editor_info[overwrite]}%(?,%F{2}│⟶ %f,%F{1}│⟶ %f) '
+  PS2='%(?,%F{2}│%f,%F{1}│%f)${editor_info[keymap]}${editor_info[insert]}${editor_info[overwrite]}%(?,%F{2}│⟶ %f,%F{1}│⟶ %f) '
   RPROMPT=''
   SPROMPT='Correct %F{1}%R%f to %F{2}%r%f [%UY%ues | %UN%uo | %Ua%ubort | %Ue%udit]? '
 
@@ -160,13 +160,13 @@ function prompt_sorin_setup {
   # fi
 }
 
-function prompt_sorin_preview {
+function prompt_zeta_sigma_preview {
   local +h PROMPT=''
   local +h RPROMPT=''
   local +h SPROMPT=''
 
   editor-info 2>/dev/null
-  prompt_preview_theme 'sorin'
+  prompt_preview_theme 'zeta_sigma'
 }
 
-prompt_sorin_setup "$@"
+prompt_zeta_sigma_setup "$@"
