@@ -37,7 +37,7 @@ zplug "b4b4r07/zplug"
 
 # External Plugins
 zplug "rupa/z", use:z.sh
-zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-autosuggestions", nice:11
 zplug "supercrabtree/k"
 zplug "Tarrasch/zsh-bd"
 zplug "chriskempson/base16-shell", use:"base16-atelierforest.dark.sh"
@@ -45,7 +45,7 @@ zplug "chriskempson/base16-shell", use:"base16-atelierforest.dark.sh"
 # zplug "mkofinas/zeta-sigma-zsh-theme"
 zplug "b4b4r07/zsh-vimode-visual", use:"zsh-vimode-visual.sh", nice:19
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
-zplug "zsh-users/zsh-history-substring-search", nice:11
+zplug "zsh-users/zsh-history-substring-search", nice:12
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -140,6 +140,7 @@ alias nv="nvim"
 alias c="clear"
 alias jl="julia"
 alias ff="firefox"
+alias oo="xdg-open 2>/dev/null"
 
 alias file-grep='grep -hHIrn'
 
@@ -215,7 +216,5 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # 1}}}
 ################################################################################
-
-eval "$(thefuck --alias)"
 
 # vim:foldmethod=marker:foldlevel=0:foldenable
