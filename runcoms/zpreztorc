@@ -35,6 +35,9 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'archive' \
   'python' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'autosuggestions' \
   'prompt'
 
 #
