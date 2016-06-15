@@ -133,18 +133,18 @@ function prompt_zeta_sigma_setup {
   zstyle ':prezto:module:git:info:added' format ' %%B%F{2} %f%%b'
   zstyle ':prezto:module:git:info:ahead' format ' %%B%F{13}⬆%f%%b'
   zstyle ':prezto:module:git:info:behind' format ' %%B%F{13}⬇%f%%b'
-  zstyle ':prezto:module:git:info:branch' format ' %%B%F{2}%b%f%%b'
+  zstyle ':prezto:module:git:info:branch' format '%%B%F{2}%b%f%%b'
   zstyle ':prezto:module:git:info:remote' format ' %%B%F{7}%R%f%%b'
   zstyle ':prezto:module:git:info:commit' format ' %%B%F{3}%.7c%f%%b'
   zstyle ':prezto:module:git:info:deleted' format ' %%B%F{1}✖%f%%b'
   zstyle ':prezto:module:git:info:modified' format ' %%B%F{4} %f%%b'
-  zstyle ':prezto:module:git:info:position' format ' %%B%F{13}%p%f%%b'
+  zstyle ':prezto:module:git:info:position' format '%%B%F{13}%p%f%%b'
   zstyle ':prezto:module:git:info:renamed' format ' %%B%F{5}➜%f%%b'
   zstyle ':prezto:module:git:info:stashed' format ' %%B%F{6} $(make-superscript "%S")%f%%b'
   zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{3}═%f%%b'
   zstyle ':prezto:module:git:info:untracked' format ' %%B%F{7} %f%%b'
   zstyle ':prezto:module:git:info:keys' format \
-    'status' ' ($(coalesce "%b%R" "%p%c"))%s%A%B%S%a%d%m%r%U%u'
+    'status' ' %s%A%B%S%a%d%m%r%U%u($(coalesce "%b%R" "%p%c"))'
 
   ZLE_RPROMPT_INDENT=0
 
