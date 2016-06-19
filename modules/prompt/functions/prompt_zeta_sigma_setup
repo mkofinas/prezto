@@ -122,9 +122,9 @@ function prompt_zeta_sigma_setup {
   zstyle ':prezto:module:editor:info:completing' format '%B%F{7}...%f%b'
   zstyle ':prezto:module:editor:info:keymap:primary' format ''
   zstyle ':prezto:module:editor:info:keymap:primary:insert' format '%B%F{5}INS%f%b'
-  zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format '%B%F{5}REP%f%b'
-  zstyle ':prezto:module:editor:info:keymap:primary:visual' format '%B%F{5}VIS%f%b'
-  zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{5}CMD%f%b'
+  zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format '%B%F{7}REP%f%b'
+  zstyle ':prezto:module:editor:info:keymap:primary:visual' format '%B%F{16}VIS%f%b'
+  zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%K{5}%F{7}CMD%f%k%b'
   # Set python-info parameters.
   zstyle ':prezto:module:python:info:virtualenv' format '%F{yellow} %f%B%F{red}[%v]%f%b'
   # Set git-info parameters.
@@ -150,8 +150,8 @@ function prompt_zeta_sigma_setup {
 
   # Define prompts.
   PROMPT='%F{3} %f%F{6}%n%f%F{3}:%f%B%F{1}[%f%b%F{1}${_prompt_zeta_sigma_pwd}%f%B%F{1}]%f%b%(!. %B%F{1}#%f%b.)
-%(?,%F{2}│%f,%F{1}│%f)${editor_info[keymap]}${editor_info[insert]}${editor_info[overwrite]}%(?,%F{2}│⟶ %f,%F{1}│⟶ %f) '
-  PS2='%(?,%F{2}│%f,%F{1}│%f)${editor_info[keymap]}${editor_info[insert]}${editor_info[overwrite]}%(?,%F{2}│⟶ %f,%F{1}│⟶ %f) '
+%(?,%F{2}│%f,%F{1}│%f)${editor_info[keymap]}${editor_info[insert]}${editor_info[overwrite]}%(?,%F{2}│⟶  %f,%F{1}│⟶  %f)'
+  PS2='%(?,%F{2}│%f,%F{1}│%f)${editor_info[keymap]}${editor_info[insert]}${editor_info[overwrite]}%(?,%F{2}│⟶  %f,%F{1}│⟶  %f)'
   RPROMPT=''
   SPROMPT='Correct %F{1}%R%f to %F{2}%r%f [%UY%ues | %UN%uo | %Ua%ubort | %Ue%udit]? '
 }
