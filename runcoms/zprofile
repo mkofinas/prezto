@@ -95,3 +95,12 @@ compctl -K _pip_completion pip
 if [ -f $HOME/.venvburrito/startup.sh ]; then
   . $HOME/.venvburrito/startup.sh
 fi
+
+# Print a random, hopefully interesting, adage.
+if (( $+commands[fortune] && $+commands[cowsay] )); then
+  if [[ -t 0 || -t 1 ]]; then
+    fortune -s | cowsay -f moose
+    print
+  fi
+fi
+
