@@ -93,5 +93,5 @@ compctl -K _pip_completion pip
 
 # startup virtualenv-burrito
 if [ -f $HOME/.venvburrito/startup.sh ]; then
-    . $HOME/.venvburrito/startup.sh
+  . $HOME/.venvburrito/startup.sh
 fi
