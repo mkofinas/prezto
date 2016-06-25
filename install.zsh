@@ -10,4 +10,3 @@ for rcfile in "${ZDOTDIR}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR}/.${rcfile:t}"
 done
 
-chsh -s /bin/zsh
