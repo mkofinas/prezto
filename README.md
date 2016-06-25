@@ -15,6 +15,10 @@ version is 4.3.17.
 
         zsh
 
+  2. Set the configuration directory according to XDG Specification:
+
+        export ZDOTDIR="${XDG_CONFIG_HOME:-${HOME}/.config}/zsh"
+
   2. Clone the repository:
 
         git clone --recursive https://github.com/mkofinas/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
@@ -23,8 +27,7 @@ version is 4.3.17.
      provided:
 
         setopt EXTENDED_GLOB
-        ln -s "${ZDOTDIR:-$HOME}/.zprezto/bootstrap/.zshenv" "${HOME}/.zshenv"
-        source "${HOME}/.zshenv"
+        ln -s "${ZDOTDIR:-$HOME}/.zprezto/bootstrap/zshenv" "${HOME}/.zshenv"
         for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
           ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
         done
