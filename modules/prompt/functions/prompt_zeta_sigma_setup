@@ -118,6 +118,8 @@ function prompt_zeta_sigma_setup {
   # Add hook for calling git-info before each command.
   add-zsh-hook precmd prompt_zeta_sigma_precmd
 
+  zstyle ':prezto:module:prompt' managed 'yes'
+
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:completing' format '%B%F{7}...%f%b'
   zstyle ':prezto:module:editor:info:keymap:primary' format ''
