@@ -82,3 +82,22 @@ function make-subscript() {
   fi
   echo "$output_string"
 }
+# is true on MacOS Darwin
+function is-darwin {
+  [[ "$OSTYPE" == darwin* ]]
+}
+
+# is true on Linux's
+function is-linux {
+  [[ "$OSTYPE" == linux* ]]
+}
+
+# is true on BSD's
+function is-bsd {
+  [[ "$OSTYPE" == *bsd* ]]
+}
+
+# is true on Cygwin (Windows)
+function is-cygwin {
+  [[ "$OSTYPE" == cygwin* ]]
+}
