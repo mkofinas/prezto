@@ -151,7 +151,7 @@ function prompt_zeta_sigma_setup {
   ZLE_RPROMPT_INDENT=0
 
   # Define prompts.
-  PROMPT='%F{3} %f%F{6}%n%f%F{3}:%f%B%F{1}[%f%b%F{1}${_prompt_zeta_sigma_pwd}%f%B%F{1}]%f%b%(!. %B%F{1}#%f%b.)
+  PROMPT='%F{3} %f%F{6}%n%f${SSH_TTY:+"%F{7}@%f%F{4}%m%f"}%F{3}:%f%B%F{1}[%f%b%F{1}${_prompt_zeta_sigma_pwd}%f%B%F{1}]%f%b%(!. %B%F{1}#%f%b.)
 %(?,%F{2}-->%f,%F{1}-->%f)'
   # PROMPT='%F{3} %f%F{6}%n%f%F{3}:%f%B%F{1}[%f%b%F{1}${_prompt_zeta_sigma_pwd}%f%B%F{1}]%f%b%(!. %B%F{1}#%f%b.)
 # %(?,%F{2}│%f,%F{1}│%f)${editor_info[keymap]}${editor_info[insert]}${editor_info[overwrite]}%(?,%F{2}│-->%f,%F{1}│-->%f)'
@@ -171,3 +171,4 @@ function prompt_zeta_sigma_preview {
 }
 
 prompt_zeta_sigma_setup "$@"
+# vim: ft=zsh
